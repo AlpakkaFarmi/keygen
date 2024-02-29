@@ -1,0 +1,19 @@
+<html><head>
+  <link rel="stylesheet" href="/index-597d90855083f957.css" integrity="sha384-7GZOiJ7WwbJ2PKz3iZ2Vt_NHNz65guUjQZ_uo6o2LYkbO_Al8pImelhUBJCReJw-">
+
+<link rel="preload" href="/wasmkeygen-a57cce1ec52ddfef_bg.wasm" as="fetch" type="application/wasm" crossorigin="anonymous" integrity="sha384-o1Mo9UPUaLELyyJ1ZXWZVUiiJ0RzQOPYurSm0GU-R6DgJkEwh_Gn3ySbdAEgMs3w">
+<link rel="modulepreload" href="/wasmkeygen-a57cce1ec52ddfef.js" crossorigin="anonymous" integrity="sha384-b6EYVzVXYuS8SH5zV6QsXnpqZ0RZJfH8TYe9e9uBMh64ib1DFU-cEWCJ3Y8bsQGG"></head>
+
+<body>
+  <input id="password"><br>
+  <a href="“#”" onclick="document.getElementById('password').value=wasmBindings.random_words(3);return false">Generate
+    password</a>
+
+
+
+<script type="module">
+import init, * as bindings from '/wasmkeygen-a57cce1ec52ddfef.js';
+init('/wasmkeygen-a57cce1ec52ddfef_bg.wasm');
+window.wasmBindings = bindings;
+
+</script></body></html>
