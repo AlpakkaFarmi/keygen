@@ -3,6 +3,7 @@
 
 <head>
   <link data-trunk rel="scss" href="index.scss" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KEYGEN</title>
@@ -88,6 +89,44 @@
     .highlight {
       color: limegreen;
     }
+
+    #passwordOutput {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 0.2em;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #passwordOutput div {
+      /*padding: 0.01em;*/
+      padding-right: 0.2em;
+      border-right: 1px solid #ffffff40;
+    }
+
+    #passwordOutput div:last-child {
+      border-right: none;
+      /* Remove the border from the last letter */
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: var(--bg-color);
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    footer a {
+      color: var(--text-color);
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent-color);
+    }
   </style>
 </head>
 
@@ -106,6 +145,13 @@
       let length = document.getElementById('length').value;
       password = wasmBindings.random_words(length);
       document.getElementById('passwordOutput').innerText = password;
+      let passwordOutput = document.getElementById('passwordOutput');
+      passwordOutput.innerHTML = ''; // Clear the previous password
+      for (let char of password) {
+        let charDiv = document.createElement('div');
+        charDiv.innerText = char;
+        passwordOutput.appendChild(charDiv);
+      }
     }
     function copyToClipboard() {
       let passwordOutput = document.getElementById('passwordOutput');
@@ -122,6 +168,12 @@
       });
     }
   </script>
+
+  <footer>
+    <a href="https://github.com/AlpakkaFarmi/keygen" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+  </footer>
 </body>
 
 </html>
