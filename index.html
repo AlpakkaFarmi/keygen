@@ -91,22 +91,8 @@
     }
 
     #passwordOutput {
-      display: grid;
-      grid-auto-flow: column;
-      gap: 0.2em;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #passwordOutput div {
-      /*padding: 0.01em;*/
-      padding-right: 0.2em;
-      border-right: 1px solid #ffffff00;
-    }
-
-    #passwordOutput div:last-child {
-      border-right: none;
-      /* Remove the border from the last letter */
+      cursor: pointer;
+      letter-spacing: 0.5em;
     }
 
     footer {
@@ -141,16 +127,11 @@
 
   <script>
     function generatePassword() {
-      let password = "";
+      let password = "rapeus-osto-soikko-horina-hengata-menetys-sovelma-porsas-asento-juohtua";
       let length = document.getElementById('length').value;
-      password = wasmBindings.random_words(length);
+      //password = wasmBindings.random_words(length);
       let passwordOutput = document.getElementById('passwordOutput');
-      passwordOutput.innerHTML = ''; // Clear the previous password
-      for (let char of password) {
-        let charDiv = document.createElement('div');
-        charDiv.innerText = char;
-        passwordOutput.appendChild(charDiv);
-      }
+      passwordOutput.innerText = password;
     }
     function copyToClipboard() {
       let passwordOutput = document.getElementById('passwordOutput');
@@ -159,12 +140,7 @@
         passwordOutput.innerText = 'Copied!';
         passwordOutput.classList.add('highlight');
         setTimeout(function () {
-          passwordOutput.innerHTML = ''; // Clear the previous password
-          for (let char of passwordText) {
-            let charDiv = document.createElement('div');
-            charDiv.innerText = char;
-            passwordOutput.appendChild(charDiv);
-          }
+          passwordOutput.innerText = passwordText;
           passwordOutput.classList.remove('highlight');
         }, 1000); // Change back after 2 seconds
       }, function (err) {
