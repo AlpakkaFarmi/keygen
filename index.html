@@ -127,9 +127,9 @@
 
   <script>
     function generatePassword() {
-      let password = "rapeus-osto-soikko-horina-hengata-menetys-sovelma-porsas-asento-juohtua";
+      let password = "";
       let length = document.getElementById('length').value;
-      //password = wasmBindings.random_words(length);
+      password = wasmBindings.random_words(length);
       let passwordOutput = document.getElementById('passwordOutput');
       passwordOutput.innerText = password;
     }
