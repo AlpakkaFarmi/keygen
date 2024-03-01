@@ -18,7 +18,7 @@ cargo install --locked trunk
 trunk build
 ```
 
-After building, open `/dist/index.html` in browser
+After building, open `dist/index.html` in browser
 
 ## Credits
 
