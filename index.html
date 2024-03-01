@@ -144,7 +144,6 @@
       let password = "";
       let length = document.getElementById('length').value;
       password = wasmBindings.random_words(length);
-      document.getElementById('passwordOutput').innerText = password;
       let passwordOutput = document.getElementById('passwordOutput');
       passwordOutput.innerHTML = ''; // Clear the previous password
       for (let char of password) {
@@ -155,12 +154,17 @@
     }
     function copyToClipboard() {
       let passwordOutput = document.getElementById('passwordOutput');
-      let passwordText = passwordOutput.innerText;
+      let passwordText = passwordOutput.textContent.replace(/\n/g, ''); // Remove newline characters
       navigator.clipboard.writeText(passwordText).then(function () {
         passwordOutput.innerText = 'Copied!';
         passwordOutput.classList.add('highlight');
         setTimeout(function () {
-          passwordOutput.innerText = passwordText;
+          passwordOutput.innerHTML = ''; // Clear the previous password
+          for (let char of passwordText) {
+            let charDiv = document.createElement('div');
+            charDiv.innerText = char;
+            passwordOutput.appendChild(charDiv);
+          }
           passwordOutput.classList.remove('highlight');
         }, 1000); // Change back after 2 seconds
       }, function (err) {
